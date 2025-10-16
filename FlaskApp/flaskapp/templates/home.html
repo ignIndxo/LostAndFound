@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for item in items %} 
+        <!--<h1>From: {{ item.username }}</h1>
+        <img src="{{ item.content }}" width="1000" height="333">
+        <p>Free on: {{ item.datesFree }} Cost: {{ item.cost }} credits</p> -->
+        <article class="media content-section">
+          <img style="height: 250px; width: 250px; padding: 10px" class="img-rounded" src="{{  url_for('static', filename='image_pics/' + item.image_file) }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <h2><a class="article-title">{{ item.userID }}</a></h2>
+            </div>
+            <p class="article-content">Type of Clothing: {{ item.typeOfClothing }}</p>
+            <p class="article-content">Colour: {{ item.colour }}</p>
+            <p class="article-content">Size: {{ item.size }}</p>
+            <p class="article-content">Brand: {{ item.brand }}</p>
+            <h5><a class="article-content" href="{{ url_for('favourite', item_id=item.id) }}">♡</a></h5>
+            <h4><a class="article-title" href="{{ url_for('rent', item_id=item.id) }}">Rent</a></h4> 
+          </div> 
+        </article>
+        
+    {% endfor %}
+{% endblock content %}
+
+<!-- <article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="#">{{ item.username }}</a>
+      <small class="text-muted">{{ post.date_posted }}</small>
+    </div>
+    <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+    <p class="article-content">{{ post.content }}</p>
+  </div>
+</article> <a class="mr-2" href="#">{{ item.author.username }}</a>-->

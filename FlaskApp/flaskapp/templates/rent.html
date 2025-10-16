@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+    <article class="media content-section">
+        <img style="height: 250px; width: 250px; padding: 10px" class="img-rounded" src="{{  url_for('static', filename='image_pics/' + item.image_file) }}">
+        <div class="media-body">
+        <div class="article-metadata">
+            <h2><a class="article-title">{{ item.userID }}</a></h2>
+        </div>
+        <p class="article-content">Type of Clothing: {{ item.typeOfClothing }}</p>
+        <p class="article-content">Colour: {{ item.colour }}</p>
+        <p class="article-content">Size: {{ item.size }}</p>
+        <p class="article-content">Brand: {{ item.brand }}</p>
+        </div> 
+    </article>
+    <div class="content-section">
+        <body>
+            <div class="article-metadata">
+                <h3> Select the date range: </h3>
+            </div>
+            <form action="" method='POST' name="myform">
+                {{ form.csrt_token }}
+                <p class="article-content">
+                {{ form.startDate.label }} {{form.startDate(class='datepicker')}} {{form.hidden_tag()}}
+                </p>
+                <p class="article-content">
+                {{ form.endDate.label }} {{form.endDate(class='datepicker')}} {{form.hidden_tag()}}
+                </p>
+                <p>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
+                </p>
+            </form>
+        </body>
+    </div> 
+{% endblock content %}
